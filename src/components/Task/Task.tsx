@@ -1,5 +1,6 @@
 import React from 'react';
-import './task.css'
+import './task.css';
+
 interface ITask extends React.PropsWithChildren{
     textOfTask: string;
     onDeleteTaskById:React.MouseEventHandler;
