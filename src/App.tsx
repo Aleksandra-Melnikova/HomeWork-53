@@ -1,14 +1,11 @@
 
-import './App.css'
+import './App.css';
+import AddTaskForm from './components/AddTaskForm/AddTaskForm.tsx';
 
-function App() {
-
-
-  return (
+const App = () => (
     <>
+    <AddTaskForm onAddTask = {()=> console.log('123')} onChangeText = {()=> console.log('123')}/>
+      </>
+);
 
-    </>
-  )
-}
-
-export default App
+export default App;

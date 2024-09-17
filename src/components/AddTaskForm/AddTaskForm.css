@@ -1,0 +1,32 @@
+.form{
+    width: 70%;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.input-task{
+    flex-basis: 70%;
+    padding: 5px 30px;
+    border-radius: 3px;
+ border-width: 1px;
+}
+.add-btn{
+    display: block;
+    flex-basis: 130px;
+    padding: 5px 30px;
+    border: 1px solid lightskyblue;
+    background: lightblue;
+    color: black;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.add-btn:hover{
+    background-color: blue;
+    color: white;
+}
+
+.add-btn:active{
+    box-shadow: 1px 1px 5px gray;
+}
