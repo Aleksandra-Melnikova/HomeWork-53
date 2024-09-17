@@ -1,21 +1,27 @@
-.form{
+.task-item{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border:1px solid black;
     width: 70%;
-    gap: 20px;
+    margin-left: 1%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+    border-radius: 5px;
+}
+.text-task{
+    display: block;
+    flex-basis: 70%;
+    padding: 5px 10px;
+    text-align: left;
 }
 
-.input-task{
-    flex-basis: 70%;
-    padding: 5px 30px;
-    border-radius: 3px;
- border-width: 1px;
-}
-.add-btn{
+.remove-btn{
     display: block;
     flex-basis: 130px;
-    padding: 5px 30px;
+    padding: 5px 10px;
     border: 1px solid lightskyblue;
     background: lightblue;
     color: black;
@@ -23,11 +29,11 @@
     border-radius: 3px;
 }
 
-.add-btn:hover{
+.remove-btn:hover{
     background-color: blue;
-    color: white;
+    color: white;;
 }
 
-.add-btn:active{
+.remove-btn:active{
     box-shadow: 1px 1px 5px gray;
 }
