@@ -23,29 +23,39 @@ const App = () => {
     ]);
 
     const changeText = (e:React.ChangeEvent<HTMLInputElement>,index:number) => {
-        console.log(e.target.value);
         const copyCurrentTasks = [...currentTasks];
         const  copyCurrentTask = {...copyCurrentTasks[index]};
         copyCurrentTask.id = (new Date().getTime()).toString();
         copyCurrentTask.text = e.target.value;
         copyCurrentTasks[index]=copyCurrentTask;
         setCurrentTasks(copyCurrentTasks);
-        console.log(copyCurrentTask);
     };
 
     const addTask = () => {
-        const copyTasks = [...tasks];
-        const copyTask = {...tasks[0]};
-        copyTask.id = currentTasks[0].id;
-        copyTask.text = currentTasks[0].text;
-        copyTasks.push(copyTask);
-        setTasks(copyTasks);
+        if(currentTasks[0].text ===''){
+            alert('Enter new task text');
+        }
+        else{
+            const copyTasks = [...tasks];
+            const copyTask = {...tasks[0]};
+            copyTask.id = currentTasks[0].id;
+            copyTask.text = currentTasks[0].text;
+            copyTasks.push(copyTask);
+            setTasks(copyTasks);
+            const copyCurrentTasks = [...currentTasks];
+            const  copyCurrentTask = {...copyCurrentTasks[0]};
+            copyCurrentTask.id = '';
+            copyCurrentTask.text = '';
+            copyCurrentTasks[0]=copyCurrentTask;
+            setCurrentTasks(copyCurrentTasks);
+        }
     };
 
     const deleteTask = (id:string) =>{
         const copyTasks = tasks.filter(task => task.id !== id);
         setTasks(copyTasks );
     };
+
     const changeCheckbox = (id:string) =>{
         const index = tasks.findIndex(task => task.id === id);
         const copyTasks = [...tasks];
@@ -53,12 +63,12 @@ const App = () => {
         copyTask.checked = !copyTask.checked;
         copyTasks[index] = copyTask;
         setTasks(copyTasks);
-
     };
+
     return(
     <>
         <div className='main-block'>)
-        <AddTaskForm onAddTask = {addTask} onChangeText = {e => changeText(e,0)}/>
+        <AddTaskForm inputText={currentTasks[0].text} onAddTask = {addTask} onChangeText = {e => changeText(e,0)}/>
         {tasks.map((task) => (
             <Task
                 key={task.id}
@@ -66,14 +76,13 @@ const App = () => {
                 onDeleteTaskById={() => deleteTask(task.id)}
                 checked={task.checked}
                 onChangeCheckbox = {() => changeCheckbox(task.id)}
+                checkId={task.id}
             >
             </Task>
-
         ))}
         </div>
     </>
     );
 };
-
 
 export default App;
