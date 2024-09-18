@@ -42,7 +42,14 @@ const App = () => {
         setTasks(copyTasks);
     }
 
+    const deleteTask = (id:string) =>{
 
+        const copyTasks = tasks.filter(task => task.id !== id);
+        // let index = people.findIndex(person => person.id === id);
+//     const copyPeople = [...people];
+// copyPeople.splice(index,1);
+        setTasks(copyTasks );
+    };
     return(
     <>
         <div className='main-block'>)
@@ -51,7 +58,7 @@ const App = () => {
             <Task
                 key={task.id}
                 textOfTask={task.text}
-                onDeleteTaskById={()=> console.log('123')}>
+                onDeleteTaskById={() => deleteTask(task.id)}>
             </Task>
 
         ))}
