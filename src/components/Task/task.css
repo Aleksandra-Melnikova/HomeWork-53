@@ -1,8 +1,8 @@
 .task-item{
     margin-top: 20px;
     margin-bottom: 20px;
-    border:1px solid black;
-    width: 70%;
+    border:1px dashed black;
+    width: 95%;
     margin-left: 1%;
     display: flex;
     flex-direction: row;
@@ -20,7 +20,7 @@
 
 .remove-btn{
     display: block;
-    flex-basis: 130px;
+    flex-basis: 15%;
     padding: 5px 10px;
     border: 1px solid lightskyblue;
     background: lightblue;

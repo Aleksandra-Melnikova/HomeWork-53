@@ -5,24 +5,57 @@ import Task from "./components/Task/Task.tsx";
 import {useState} from "react";
 
 interface ITask {
-    textOfTask: string;
+    text: string;
     id: string,
 }
 
 
 const App = () => {
 
-    const [task, setTask] = useState<ITask[]>([
-        {id: '123', textOfTask: "John"},
-        {id: '1234', textOfTask: "Jane"},
-        {id: '12345', textOfTask: "Jane"},
+    const [tasks, setTasks] = useState<ITask[]>([
+        {id: '123', text: "Buy milk"},
+        {id: '1234', text: "Walk with dog"},
+        {id: '12345', text: "Do homework"},
     ]);
+
+    const [currentTasks, setCurrentTasks] = useState<ITask[]>([
+        {id: '', text: ""},
+    ])
+
+    const changeText = (e:React.ChangeEvent<HTMLInputElement>,index:number) => {
+        console.log(e.target.value);
+        const copyCurrentTasks = [...currentTasks];
+        const  copyCurrentTask = {...copyCurrentTasks[index]}
+        copyCurrentTask.id = (new Date().getTime()).toString();
+        copyCurrentTask.text = e.target.value;
+        copyCurrentTasks[index]=copyCurrentTask;
+        setCurrentTasks(copyCurrentTasks);
+        console.log(copyCurrentTask);
+    };
+
+    const addTask = () => {
+        const copyTasks = [...tasks];
+        const copyTask = {...tasks[0]};
+        copyTask.id = currentTasks[0].id;
+        copyTask.text = currentTasks[0].text;
+        copyTasks.push(copyTask);
+        setTasks(copyTasks);
+    }
 
 
     return(
     <>
-        <AddTaskForm onAddTask = {()=> console.log('123')} onChangeText = {()=> console.log('123')}/>
-        <Task textOfTask = {"123"} onDeleteTaskById ={()=> console.log('123')}/>
+        <div className='main-block'>)
+        <AddTaskForm onAddTask = {addTask} onChangeText = {e => changeText(e,0)}/>
+        {tasks.map((task) => (
+            <Task
+                key={task.id}
+                textOfTask={task.text}
+                onDeleteTaskById={()=> console.log('123')}>
+            </Task>
+
+        ))}
+        </div>
     </>
     )
 };

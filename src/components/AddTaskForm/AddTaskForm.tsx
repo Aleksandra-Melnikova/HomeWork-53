@@ -10,7 +10,7 @@ interface Props extends React.PropsWithChildren{
 const AddTaskForm: React.FC<Props> = ({onChangeText, onAddTask}) => {
     return (
         <div className="form">
-            <input className="input-task" type="text" value="Add new task" onChange={onChangeText}/>
+            <input className="input-task" type="text"  onChange={onChangeText}/>
             <button className="add-btn" type="button" onClick={onAddTask}>Add Task</button>
         </div>
     );

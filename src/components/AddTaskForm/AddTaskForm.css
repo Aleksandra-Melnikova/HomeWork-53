@@ -1,5 +1,5 @@
 .form{
-    width: 70%;
+    width: 95%;
     gap: 20px;
     display: flex;
     flex-direction: row;
@@ -15,7 +15,7 @@
 
 .add-btn{
     display: block;
-    flex-basis: 130px;
+    flex-basis: 15%;
     padding: 5px 30px;
     border: 1px solid lightskyblue;
     background: lightblue;
